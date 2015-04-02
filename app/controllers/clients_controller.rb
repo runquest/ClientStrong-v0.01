@@ -37,8 +37,6 @@ class ClientsController < ApplicationController
     end
   end
 
-
-
   def index
 
     if params[:search]

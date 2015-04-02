@@ -19,7 +19,7 @@ def index
 
 def destroy
   session[:user_id] = nil
-  redirect_to clients_path, notice: "You successfully logged out."
+  redirect_to root_path, notice: "You successfully logged out."
 end
 
 
