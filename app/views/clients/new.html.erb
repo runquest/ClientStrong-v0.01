@@ -1,0 +1,32 @@
+ <%= link_to "Back to full client list", clients_path %>
+
+
+<h1>Add new Client</h1>
+
+<%= form_for @client do |f| %>
+      <div>
+        <%= f.label "name" %><br>
+        <%= f.text_field "name" %>
+      </div>
+      <div>
+        <%= f.label "start date" %><br>
+        <%= f.date_field "start_date" %>
+      </div>
+      <div>
+        <%= f.label "email" %><br>
+        <%= f.text_field "email" %>
+      </div>
+      <div>
+        <%= f.label "age" %><br>
+        <%= f.number_field "age" %>
+      </div>
+      <div>
+      <%= f.label "Is client active: YES" %>
+        <%= f.radio_button :active, 'yes' %>
+        <%= f.label "Is client active: NO" %>
+        <%= f.radio_button :active, 'no' %>
+      </div>
+      <div>
+        <%= f.submit "Submit" %> 
+      </div>
+    <% end %>

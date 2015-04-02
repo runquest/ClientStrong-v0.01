@@ -1,0 +1,29 @@
+<h1>All my clients</h1>
+<p><%= link_to "Add new client", new_client_path %></p>
+
+<hr>
+
+<%= form_tag("/clients", method: "get") do %>
+  <%= label_tag(:search, "Search by name:") %>
+  <%= text_field_tag(:search) %>
+  <%= link_to "Clear search", clients_path %>
+  <%= radio_button_tag "status", true %>
+  <%= label_tag "client is active (true)" %>
+  <%= radio_button_tag "status", false %>
+  <%= label_tag "client is not active (false)" %>
+   <%= submit_tag("Search") %>
+<% end %>
+
+
+
+<% @client.each do |client| %>
+
+  <h3><%= link_to client.name, client_path(client) %></h3>
+  <ul>
+   <li> <p>Email:<%= client.email %></p></li>
+   <li> <p>Age:<%= client.age %></p></li>
+   <li> <p>Start date:<%= client.start_date %></p></li>
+   <li> <p>Active?<%= client.active %></p></li>
+  </ul>
+<hr>
+<% end %>
