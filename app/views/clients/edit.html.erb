@@ -1,7 +1,7 @@
  <%= link_to "Back to full client list", clients_path %>
 
 
- <h1>Add new Client</h1>
+ <h1>Edit Client</h1>
 
  <%= form_for @client do |f| %>
  <div>
@@ -27,6 +27,6 @@
   <%= f.radio_button :active, 'no' %>
 </div>
 <div>
-  <%= f.submit "Submit" %> 
+  <%= f.submit "Update" %> 
 </div>
 <% end %>

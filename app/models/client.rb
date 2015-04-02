@@ -5,7 +5,7 @@ class Client < ActiveRecord::Base
   end
 
   scope :by_status, -> (status) { where(active: status) }
-  # scope :by_name_and_email, -> (query) { where("name", query) }
+  
 end
 
 

@@ -1,2 +1,18 @@
-<h1>Clients#show</h1>
-<p>Find me in app/views/clients/show.html.erb</p>
+<%= link_to "Back to full client list", clients_path %>
+
+
+
+ <% if current_user %>
+          <p><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, confirm: "You sure?" %>) (<%= link_to "edit", edit_client_path(@client) %>)</p>
+        <% else %>
+          <p><%= @client.name %></p>
+        <% end %>
+
+<p><%= @client.email %></p>
+<p><%= @client.age %></p>
+<p><%= @client.start_date %></p>
+<p><%= @client.active %></p>
+ 
+
+
+
