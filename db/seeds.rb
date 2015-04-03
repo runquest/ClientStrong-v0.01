@@ -14,3 +14,12 @@ client_4 = Client.create(name: 'Bryan', age: 31, email: 'aiste+5@gmail.com', sta
 
 
 user_1 = User.create(email: 'aiste.ulozaite@gmail.com', firstname: 'Aiste', lastname: 'Ulo', password: 'hello', password_confirmation: 'hello')
+
+
+# workout_1 = 
+# workout_2
+# workout_3
+# workout_4
+# workout_5
+# workout_6
+# workout_7

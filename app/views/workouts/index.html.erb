@@ -1,2 +1,2 @@
-<h1>Workouts#index</h1>
-<p>Find me in app/views/workouts/index.html.erb</p>
+<h1>All <%= @client.name %>'s workout </h1>
+<p><%= link_to "Add a workout", new_client_workout_path(@client) %></p>

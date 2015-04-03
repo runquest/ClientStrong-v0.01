@@ -2,11 +2,11 @@
 
 
 
- <% if current_user %>
-          <p><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, confirm: "You sure?" %>) (<%= link_to "edit", edit_client_path(@client) %>)</p>
-        <% else %>
-          <p><%= @client.name %></p>
-        <% end %>
+<% if current_user %>
+  <p><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, data: { confirm: "You sure?" } %>) (<%= link_to "edit", edit_client_path(@client) %>)</p>
+<% else %>
+  <p><%= @client.name %></p>
+<% end %>
 
 <p><%= @client.email %></p>
 <p><%= @client.age %></p>
@@ -17,8 +17,11 @@
 <hr>
 
 <% @client.workouts.each do |workout| %>
-<p><%= workout.title %></p>
-<p><%= workout.date %></p>
+  <p><%= workout.title %></p> 
+  <p>(<%= link_to "delete", client_workout_path(@client, workout), method: :delete, data: { confirm: "You sure?" } %>)</p>
+  <p>(<%= link_to "edit", edit_client_workout_path(@client, workout) %>)</p>
+
+  <p><%= workout.date %></p>
 <p><%= workout.description %></p>
 <% end %>
 
