@@ -14,5 +14,13 @@
 <p><%= @client.active %></p>
  
 
+<hr>
 
+<% @client.workouts.each do |workout| %>
+<p><%= workout.title %></p>
+<p><%= workout.date %></p>
+<p><%= workout.description %></p>
+<% end %>
+
+<p><%= link_to "Add a workout", new_client_workout_path(@client) %></p>
 

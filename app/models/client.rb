@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+  has_many :workouts
 
   def self.search(query)
     where("name like ? OR email like ?", "%#{query}%", "%#{query}%")

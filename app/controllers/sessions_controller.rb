@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
  def new
+  # @session = Session.new
  end
+
  def create
   user = User.find_by(email: params[:email])
 
@@ -19,7 +21,7 @@ def index
 
 def destroy
   session[:user_id] = nil
-  redirect_to root_path, notice: "You successfully logged out."
+  redirect_to new_session_path, notice: "You successfully logged out."
 end
 
 

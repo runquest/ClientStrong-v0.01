@@ -9,7 +9,6 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
  
-
    if @client.save
       redirect_to clients_path, notice: "#{@client.name} was created successfully!"
     else
@@ -45,7 +44,6 @@ class ClientsController < ApplicationController
       @client = Client.all
     end
 
-
     if params[:status]
       @client = @client.by_status (params[:status] == "true")
     end
@@ -55,9 +53,6 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
   end
 
-
-
-
 protected
 
   def client_params
@@ -65,7 +60,4 @@ protected
       :name, :email, :age, :active, :start_date
       )
   end
-
-
-
 end
