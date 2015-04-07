@@ -56,11 +56,18 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
   end
 
+  def check_in_workout
+    @client = Client.find(params[:id])
+    @client.check_in += 1
+    @client.save
+    redirect_to client_path(@client)
+  end
+
 protected
 
   def client_params
     params.require(:client).permit(
-      :name, :email, :age, :active, :start_date, :avatar
+      :name, :email, :age, :active, :start_date, :avatar, :check_in
       )
   end
 end

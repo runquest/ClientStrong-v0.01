@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403224805) do
+ActiveRecord::Schema.define(version: 20150407201801) do
 
   create_table "clients", force: :cascade do |t|
     t.string   "name"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20150403224805) do
     t.string   "email"
     t.date     "start_date"
     t.boolean  "active"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.string   "avatar"
+    t.integer  "check_in",   default: 0
   end
 
   create_table "users", force: :cascade do |t|
@@ -40,6 +41,7 @@ ActiveRecord::Schema.define(version: 20150403224805) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "check_in"
   end
 
   add_index "workouts", ["client_id"], name: "index_workouts_on_client_id"

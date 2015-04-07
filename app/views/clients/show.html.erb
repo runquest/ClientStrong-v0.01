@@ -3,7 +3,7 @@
     <%= link_to "Back to full client list", clients_path %>
     <div id="client-name">
       <% if current_user %>
-        <h2><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, data: { confirm: "You sure?" } %>) (<%= link_to "edit", edit_client_path(@client) %>)  <%= link_to "Add a workout", new_client_workout_path(@client), class: 'btn-primary btn-lg pull-right' %></h2>         
+      <h2><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, data: { confirm: "You sure?" } %>) (<%= link_to "edit", edit_client_path(@client) %>)  <%= link_to "Add a workout", new_client_workout_path(@client), class: 'btn-primary btn-lg pull-right' %></h2>         
 
       <% else %>
       <p><%= @client.name %></p>
@@ -58,7 +58,11 @@
           </div>
         </div>
         <hr>
-          <%= submit_tag "Check IN", class: 'btn-danger btn-lg btn-block' %>
+        <h3>You have checked-in to: <%= @client.check_in %> workouts </h3>
+        
+
+
+        <a href="/check-in/<%= @client.id %>" class="btn btn-warning">Check in</a>
 
 
 
@@ -69,17 +73,16 @@
 
       <div class="col-sm-8 client-workouts">
         <div class="container-fluid">
-
           <% @client.workouts.each do |workout| %>
-          <h2><%= workout.title %></h2> 
+          <h4><%= workout.check_in %></h4>
           <div class="container-fluid">
-          <%= workout.date %> | <%= link_to "delete", client_workout_path(@client, workout), method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "edit", edit_client_workout_path(@client, workout) %>
-          <p><%= workout.description %></p>
+            <%= workout.date %> | <%= link_to "delete", client_workout_path(@client, workout), method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "edit", edit_client_workout_path(@client, workout) %>
+            <p><%= workout.description %></p>
           </div>
           <% end %>
         </div>
       </div>
-    
+
 
 
 
