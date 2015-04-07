@@ -1,3 +1,59 @@
 // Place all the styles related to the clients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.clients-filters {
+  // display: block;
+  top: 40;
+  left: 0;
+  right: 0;
+  width: 100%;
+  position: fixed;
+  background-color: #97D3C9;
+  z-index: 15;
+  border-bottom: solid 1px #3c9486;
+  padding-bottom: 1em;
+}
+
+a.btn-primary.btn-lg.btn-clear-search {
+    background-color: #97D3C9;
+}
+
+.clients-list {
+  margin-top: 300px;
+  z-index: -1;
+}
+
+.clients-list-thumb {
+  list-style: none;
+}
+
+
+ul.clients-list-thumb {
+    padding-left: 10px;
+}
+
+h3 {
+  margin-top: 5px;
+}
+
+.filter-label {
+  font-size: 24px;
+}
+
+div#client-name {
+  // background-color: red;
+  border-bottom: solid 1px #3c9486;
+  // border-top: solid 1px #3c9486;
+  padding-left: 1em;
+
+}
+
+img.image-avatar {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.col-sm-8.client-workouts {
+    margin-top: 20px;
+}

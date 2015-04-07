@@ -3,11 +3,15 @@
 
  <h1>Add new Client</h1>
 
- <%= form_for @client do |f| %>
+ <%= form_for @client, :html => {:multipart => true} do |f| %>
  <div>
   <%= f.label "name" %><br>
   <%= f.text_field "name" %>
 </div>
+  <div>
+    <%= f.label "avatar" %><br>
+    <%= f.file_field :avatar %>
+  </div>
 <div>
   <%= f.label "start date" %><br>
   <%= f.date_field "start_date" %>

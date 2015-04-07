@@ -33,16 +33,24 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'faker'
 
+# rMagic for image manipulation (resizing)
+gem 'rmagick'
+
+# CarrierWave for images
+gem 'carrierwave'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# populates database Populator
+gem 'populator'
+
 group :development do
 
-gem 'better_errors'
-gem "binding_of_caller"
+  gem 'better_errors'
+  gem "binding_of_caller"
 
 end
-
 
 
 group :development, :test do

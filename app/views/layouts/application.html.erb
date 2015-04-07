@@ -7,10 +7,12 @@
       <%= csrf_meta_tags %>
     </head>
     <body>
+    <div class="container-fluid">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value) %>
       <% end %>
       <%= render 'layouts/header' %>
       <%= yield %>
+      </div>
     </body>
     </html>

@@ -1,28 +1,65 @@
-<h1>All my clients</h1>
-<p><%= link_to "Add new client", new_client_path %></p>
+<div id="clients-index">
+  <div class="container-fluid">
+    <div class="row clients-filters">
+      <div class="container-fluid">
+        <div class="col-sm-12">
+          <h1>All my clients</h1>
+          <p><%= link_to "Add new client", new_client_path %></p>
 
-<hr>
+          <hr>
+          <div class="row">
+            <div class="col-sm-4">
+              <div id="search">
+                <%= form_tag("/clients", method: "get") do %>
+                <%= label_tag(:search, "Search by name:", class: "filter-label") %>
+                <%= text_field_tag "search"%>
+              </div>
+            </div>
 
-<%= form_tag("/clients", method: "get") do %>
-  <%= label_tag(:search, "Search by name:") %>
-  <%= text_field_tag(:search) %>
-  <%= link_to "Clear search", clients_path %>
-  <%= radio_button_tag "status", true %>
-  <%= label_tag "client is active (true)" %>
-  <%= radio_button_tag "status", false %>
-  <%= label_tag "client is not active (false)" %>
-   <%= submit_tag("Search") %>
-<% end %>
+            <div class="col-sm-4">
+              <div>
+                <%= radio_button_tag "status", true %>
+                <%= label_tag "client is active (true)" %>
+                <%= radio_button_tag "status", false %>
+                <%= label_tag "client is not active (false)" %>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div>
+                <%= submit_tag "Search" %>
+                <%= link_to "Clear search", clients_path, class: 'btn-primary btn-lg btn-clear-search' %>
+              </div>
+            </div>
+          </div><!-- row search-filter-box -->
+        </div>
+        <hr>
+        <% end %>
+      </div>
+    </div> 
+    <div class="row clients-list">
 
-
-
-<% @client.each do |client| %>
-  <h3><%= link_to client.name, client_path(client) %></h3>
-  <ul>
-   <li> <p>Email:<%= client.email %></p></li>
-   <li> <p>Age:<%= client.age %></p></li>
-   <li> <p>Start date:<%= client.start_date %></p></li>
-   <li> <p>Active?<%= client.active %></p></li>
-  </ul> 
-  <hr>
-<% end %>
+      <% @client.each do |client| %>
+        <div class="col-sm-6">       
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="thumbnail">
+                <%= image_tag client.avatar_url.to_s %>
+              </div> 
+            </div>
+            <div class="col-sm-6">
+              <h3 class=""><%= link_to client.name, client_path(client) %></h3>
+                <ul class="clients-list-thumb">
+                 <li><strong>Email:</strong>  <%= client.email %></li>
+                 <li><strong>Age:</strong>  <%= client.age %></li>
+                 <li><strong>Start date:</strong> <%= client.start_date %></li>
+                 <li><strong>Active?</strong> <%= client.active %></li>
+                </ul> 
+                <hr>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>  
+  </div>
+</div>

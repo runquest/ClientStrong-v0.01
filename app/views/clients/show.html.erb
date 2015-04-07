@@ -1,29 +1,83 @@
-<%= link_to "Back to full client list", clients_path %>
+<div id="clients-show">
+  <div class="container-fluid">
+    <%= link_to "Back to full client list", clients_path %>
+    <div id="client-name">
+      <% if current_user %>
+        <h2><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, data: { confirm: "You sure?" } %>) (<%= link_to "edit", edit_client_path(@client) %>)  <%= link_to "Add a workout", new_client_workout_path(@client), class: 'btn-primary btn-lg pull-right' %></h2>         
+
+      <% else %>
+      <p><%= @client.name %></p>
+      <% end %>
+    </div>
 
 
 
-<% if current_user %>
-  <p><%= @client.name %> (<%= link_to "delete", client_path(@client), method: :delete, data: { confirm: "You sure?" } %>) (<%= link_to "edit", edit_client_path(@client) %>)</p>
-<% else %>
-  <p><%= @client.name %></p>
-<% end %>
+    <div class="row">
+      <div class="col-sm-4 client-info">
 
-<p><%= @client.email %></p>
-<p><%= @client.age %></p>
-<p><%= @client.start_date %></p>
-<p><%= @client.active %></p>
- 
+        <div class="avatar-image"><%= image_tag @client.avatar_url, class: "image-avatar" %></div>
 
-<hr>
+        <div class="row ">
+          <div class="col-sm-4">
+            <strong>Email: </strong>
+          </div>
+          <div class="col-sm-8">
+            <p><%= @client.email %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Age:</strong>
+          </div>
+          <div class="col-sm-8">
+            <p><%= @client.age %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Start date:</strong>
+          </div>
+          <div class="col-sm-8">
+            <p><%= @client.start_date %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Is client active?</strong>
+          </div>
+          <div class="col-sm-8">
+            <p><%= @client.active %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <strong>Total Workouts Recorded</strong>
+          </div>
+          <div class="col-sm-8">
+            <p><%= @client.workouts.size %></p>
+          </div>
+        </div>
+        <hr>
+        <div class="client-description"><p>Client description placeholder</p>
+        </div>
+      </div>
 
-<% @client.workouts.each do |workout| %>
-  <p><%= workout.title %></p> 
-  <p>(<%= link_to "delete", client_workout_path(@client, workout), method: :delete, data: { confirm: "You sure?" } %>)</p>
-  <p>(<%= link_to "edit", edit_client_workout_path(@client, workout) %>)</p>
+      <div class="col-sm-8 client-workouts">
+        <div class="container-fluid">
 
-  <p><%= workout.date %></p>
-<p><%= workout.description %></p>
-<% end %>
+          <% @client.workouts.each do |workout| %>
+          <h2><%= workout.title %></h2> 
+          <div class="container-fluid">
+          <%= workout.date %> | <%= link_to "delete", client_workout_path(@client, workout), method: :delete, data: { confirm: "You sure?" } %> | <%= link_to "edit", edit_client_workout_path(@client, workout) %>
+          <p><%= workout.description %></p>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    
 
-<p><%= link_to "Add a workout", new_client_workout_path(@client) %></p>
 
+
+    </div>
+  </div>
+</div>

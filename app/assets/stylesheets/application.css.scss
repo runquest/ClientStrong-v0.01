@@ -14,3 +14,25 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+// @import url(http://fonts.googleapis.com/css?family=Indie+Flower);
+@import "header";
+@import "clients";
+@import "sessions";
+@import "users";
+@import "workouts";
+
+body {
+    margin: 60px 0;
+    padding: 0;
+    background-color: #e1e3e4;
+}
+
+.btn-primary {
+  background-color: #3c9486;
+  border-color: #3c9486;
+  border: 0;
+}
+
+.alert {
+  background-color: yellow;
+}

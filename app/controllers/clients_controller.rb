@@ -2,6 +2,22 @@ require 'byebug'
 
 class ClientsController < ApplicationController
   
+  before_filter :restrict_access
+
+  def index
+
+    if params[:search]
+      @client = Client.search params[:search]   
+    else
+      @client = Client.all
+    end
+
+    if params[:status]
+      @client = @client.by_status (params[:status] == "true")
+    end
+  end
+
+
   def new
     @client = Client.new
   end
@@ -34,20 +50,7 @@ class ClientsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def index
-
-    if params[:search]
-      @client = Client.search params[:search]   
-    else
-      @client = Client.all
-    end
-
-    if params[:status]
-      @client = @client.by_status (params[:status] == "true")
-    end
-  end
+  end 
 
   def show
     @client = Client.find(params[:id])
@@ -57,7 +60,7 @@ protected
 
   def client_params
     params.require(:client).permit(
-      :name, :email, :age, :active, :start_date
+      :name, :email, :age, :active, :start_date, :avatar
       )
   end
 end

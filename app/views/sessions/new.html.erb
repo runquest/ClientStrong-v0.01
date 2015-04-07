@@ -1,13 +1,15 @@
+<div id="container-log-in" class="">
+  <div class="center-me">
 
-<div class="jumbotron">
-  <div class="container-fluid">
-   <h1>Log In</h1>
    <%= form_tag sessions_path do %>
-   <%= label_tag "email", nil, :class => "control-label" %><br/>
-   <%= text_field_tag "email", nil, :class=> "input-lg", :placeholder=> "email@email.com" %><br/>
-   <%= label_tag :password, nil, :class => "control-label" %><br/>
-   <%= password_field_tag :password, nil, :class=> "input-lg", :placeholder=> "password" %><br/>
-   <%= submit_tag "Log In", class: 'btn-primary btn-lg ' %>
+   <h3><%= label_tag "email", nil, :class => "control-label" %></h3>
+   <%= text_field_tag "email", nil, :class=> "input-lg", :placeholder=> "email@example.com" %><br/>
+   <h3><%= label_tag :password, nil, :class => "control-label" %></h3>
+   <%= password_field_tag :password, nil, :class=> "input-lg", :placeholder=> "********" %><%= submit_tag "Log In", class: 'btn-primary btn-lg btn-block' %>
    <% end %>
+
+   <div class="login-links text-center">
+     <p><%= link_to "Sign Up", new_user_path %></p>
+   </div>
  </div>
 </div>
