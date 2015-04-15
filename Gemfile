@@ -42,8 +42,20 @@ gem 'carrierwave'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# deploying to heroku
+gem "heroku"
+gem 'thin'
+
 # populates database Populator
 gem 'populator'
+
+group :production do
+  gem 'pg'
+end
+
+group :production do
+  gem 'thin'
+end
 
 group :development do
 
