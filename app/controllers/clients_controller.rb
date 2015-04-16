@@ -1,5 +1,3 @@
-require 'byebug'
-
 class ClientsController < ApplicationController
   
   before_filter :restrict_access
