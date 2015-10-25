@@ -1,6 +1,5 @@
 class WorkoutsController < ApplicationController
   
-  before_filter :restrict_access
   before_filter :load_client
 
 

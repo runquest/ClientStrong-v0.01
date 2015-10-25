@@ -50,6 +50,9 @@ gem "heroku"
 # populates database Populator
 gem 'populator'
 
+# api base for the app
+gem 'rails-api'
+
 group :production do
 
   gem 'pg'
