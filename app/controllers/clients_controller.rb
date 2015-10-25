@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  
+  include ActionController::MimeResponds
   # before_filter :restrict_access
 
   def index
@@ -8,6 +8,8 @@ class ClientsController < ApplicationController
       @client = Client.search params[:search]   
     else
       @client = Client.all
+      render json: @client
+
     end
 
     if params[:status]
