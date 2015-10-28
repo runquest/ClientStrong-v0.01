@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
 
-resources :clients do
-  resources :workouts
-end
-resources :users, only: [:new, :create]
-resources :sessions, only: [:new, :create, :destroy]
+  namespace :api do
+    namespace :v1 do
+      resources :clients do
+        resources :workouts
+      end
+      resources :users, only: [:new, :create]
+      resources :sessions, only: [:new, :create, :destroy]
 
-root to: 'clients#index'
+      root to: 'clients#index'
 
-get '/check-in/:id', to: 'clients#check_in_workout'
+      get '/check-in/:id', to: 'clients#check_in_workout'
+    end
+  end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
