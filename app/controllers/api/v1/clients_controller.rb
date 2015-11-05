@@ -4,7 +4,7 @@ module Api
         include ActionController::MimeResponds
 
 
-    # GET method
+    # GET method - get all clients;
     # base_url/index
 
       def index
@@ -12,7 +12,7 @@ module Api
         render json: @clients
       end
 
-    # GET method
+    # GET method - get particular client;
     # base_url/clients/{id}
 
       def show
@@ -20,10 +20,14 @@ module Api
         render json: @client
       end
 
-    # POST method
+    # POST method - create new client
     # base_url/clients
     # { "client": { 
-          # "name":"Vilius"
+          # "name":"Vilius",
+          # "age": "21", 
+          # "email": "new@gmail.com",
+          # "start_date": "1989-01-12",
+          # "active": true
         # }
     # }
 
@@ -37,12 +41,38 @@ module Api
         end
       end
 
+      #DELETE method - delete client
+      # base_url/clients/{id}
+
+      def destroy
+        @client = Client.find(params[:id])
+        @client.destroy
+        render json: {message: 'deleted'}
+      end
+
+      #PUT method - update client details
+      # base_url/clients/{id}
+
+      # { "client":
+      #   {   
+      #     "active": false
+      #   }
+      # }
+
+        def update
+          @client = Client.find(params[:id])
+          @client.update!(client_params)
+          render json: @client
+        end
+
       def client_params
-        params.require(:client).permit(:name)
+        # params.require(:client).permit(:name, :age, :email, :start_date, :active)
+        params.require(:client).permit(:name, :age, :email, :start_date, :active)
       end
     end
   end
 end
+
 
 
 
